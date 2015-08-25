@@ -103,10 +103,11 @@ $(document).ready(function() {
                     }
                     break;
                   case "c":
+                    console.log("column is full")
                     for (i=0;i<10;i++) {
                       gridArray[i][c] = 0
-                      $("#gridArray\\["+r+"\\]\\["+i+"\\]").css("backgroundColor", "#e8e8e8")
-                      $("#gridArray\\["+r+"\\]\\["+i+"\\]").css("borderColor", "#e8e8e8")
+                      $("#gridArray\\["+i+"\\]\\["+c+"\\]").css("backgroundColor", "#e8e8e8")
+                      $("#gridArray\\["+i+"\\]\\["+c+"\\]").css("borderColor", "#e8e8e8")
                     }
                   break;
                 }
