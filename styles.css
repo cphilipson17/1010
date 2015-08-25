@@ -108,81 +108,17 @@ h1{
   background-color: #7e8ed5;
 } */
 .b1 {
-    -webkit-transition: all 0.7s ease-in-out;
-    -moz-transition: all 0.7s ease-in-out;
-    -o-transition: all 0.7s ease-in-out;
-    -ms-transition: all 0.7s ease-in-out;
-    transition: all 0.7s ease-in-out;
     background-color: #7e8ed5;
-
     display: inline-block;
     text-align: center;
-    font-family: sans-serif;
-
-    -webkit-transform: scale( 0.405 );
-    -moz-transform: scale( 0.405 );
-    -o-transform: scale( 0.405 );
-    -ms-transform: scale( 0.405 );
-    transform: scale( 0.405 );
-
-    border-radius: 5px;
-    width: 36px;
-    height: 36px;
-    margin: 2px;
     border: 1px solid #7e8ed5;
 }
 
-.b1:hover {
-    -webkit-transform: scale( 1 );
-    -moz-transform: scale( 1 );
-    -o-transform: scale( 1 );
-    -ms-transform: scale( 1 );
-    transform: scale( 1 );
-}
-
-.b2a{
-  border-radius: 2.02px;
-  width: 14.57px;
-  height: 14.57px;
-  margin: 0.81px;
-  border: 0.41px solid #FFC63E;
-  background-color: #FFC63E;
-  position: absolute;
-  top: 45px;
-  right: 38px;
-  float: left;
-  display: inline-block;
-  transition: 0.7s ease;
-  -o-transition: 0.7s ease;
-  -moz-transition: 0.7s ease;
-  -webkit-transition: 0.7s ease;
-}
-
-.b2b{
-  border-radius: 2.02px;
-  width: 14.57px;
-  height: 14.57px;
-  margin: 0.81px;
-  border: 0.41px solid #FFC63E;
-  background-color: #FFC63E;
-  position: absolute;
-  top: 45px;
-  right: 52.57px;
-  float: left;
-  display: inline-block;
-  transition: 0.7s ease;
-  -o-transition: 0.7s ease;
-  -moz-transition: 0.7s ease;
-  -webkit-transition: 0.7s ease;
-}
-
-.b2:hover , .b2:active{
-  border-radius: 5px;
-  width: 36px;
-  height: 36px;
-  margin: 2px;
+.b2 {
   border: 1px solid #FFC63E;
   background-color: #FFC63E;
+  text-align: center;
+  display: inline-block;
 }
 
 .b4{
@@ -213,5 +149,32 @@ h1{
 }
 
 .blockPattern {
+/*   -webkit-transition: all 0.7s ease-in-out;
+  -moz-transition: all 0.7s ease-in-out;
+  -o-transition: all 0.7s ease-in-out;
+  -ms-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+
+  -webkit-transform: scale( 0.405 );
+  -moz-transform: scale( 0.405 );
+  -o-transform: scale( 0.405 );
+  -ms-transform: scale( 0.405 );
+  transform: scale( 0.405 );
+ */
   display: inline-block;
+}
+
+.blockPattern:hover {
+    -webkit-transform: scale( 1 );
+    -moz-transform: scale( 1 );
+    -o-transform: scale( 1 );
+    -ms-transform: scale( 1 );
+    transform: scale( 1 );
+}
+
+.block {
+  border-radius: 5px;
+  width: 36px;
+  height: 36px;
+  margin: 2px;
 }

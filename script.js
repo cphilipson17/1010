@@ -2,8 +2,8 @@
 // Global variables
 var loadPatternsToMenu;
 var gridArray = [];
-var blockPatterns = ["<div class='blockPattern'><div class='b1 block'></div><div class='b1 block'></div></div>",
-                     "<div class='blockPattern'><div class='b1'></div></div>",
+var blockPatterns = ["<div class='blockPattern'><div class='b1 block'></div></div>",
+                     "<div class='blockPattern'><div class='b1 block'></div></div>",
                      "<div class='blockPattern'><div class='b1 block'></div></div>",
                      "<div class='blockPattern'><div class='b1 block'></div></div>"];
 var blocksInMenu = 0;
@@ -95,15 +95,18 @@ $(document).ready(function() {
               if (isFull[key]) {
                 switch (key) {
                   case "r":
+                    console.log("row is full")
                     for (i=0;i<10;i++) {
                       gridArray[r][i] = 0
-                      $("#gridArray["+r+"]["+i+"]").css("backgroundColor", "#e8e8e8")
+                      $("#gridArray\\["+r+"\\]\\["+i+"\\]").css("backgroundColor", "#e8e8e8")
+                      $("#gridArray\\["+r+"\\]\\["+i+"\\]").css("borderColor", "#e8e8e8")
                     }
                     break;
                   case "c":
                     for (i=0;i<10;i++) {
                       gridArray[i][c] = 0
-                      $("#gridArray["+i+"]["+c+"]").css("backgroundColor", "#e8e8e8")
+                      $("#gridArray\\["+r+"\\]\\["+i+"\\]").css("backgroundColor", "#e8e8e8")
+                      $("#gridArray\\["+r+"\\]\\["+i+"\\]").css("borderColor", "#e8e8e8")
                     }
                   break;
                 }
