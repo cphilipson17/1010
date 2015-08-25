@@ -3,7 +3,7 @@
 var loadPatternsToMenu;
 var gridArray = [];
 var blockPatterns = ["<div class='blockPattern'><div class='b1 block'></div></div>",
-                     "<div class='blockPattern'><div class='b1 block'></div></div>",
+                     "<div class='blockPattern'><div class='b2 block'></div><div class='b2 block'></div></div>",
                      "<div class='blockPattern'><div class='b1 block'></div></div>",
                      "<div class='blockPattern'><div class='b1 block'></div></div>"];
 var blocksInMenu = 0;
@@ -51,14 +51,16 @@ $(document).ready(function() {
       // FIND OUT WHICH GRID SPACE DIV THE LEFT CORNER IS TOUCHING
       var displayStyle = $(this).css("display")
       var color = $(this).find(".block").css("backgroundColor")
-      console.log(color)
       var offset = $(this).offset()
+      console.log(offset)
       $(this).css("display", "none")
       var topLeftDiv =  document.elementFromPoint(offset.left, offset.top);
+      console.log(topLeftDiv.id)
       $(this).css("display", displayStyle)
 
       var r = (topLeftDiv.id).charAt(10)
       var c = (topLeftDiv.id).charAt(13)
+      console.log(r + c)
 
       switch ($(this).children().attr('class')) {
         case "b1 block":
@@ -74,6 +76,9 @@ $(document).ready(function() {
             console.log(topLeftDiv)
             $(topLeftDiv).css("background-color", color)
             $(topLeftDiv).css("border-color", color)
+
+            // Detract one from blocks in menu
+            blocksInMenu--;
 
             // Check if any lines are full
             var isFull = {r: true, c: true}
@@ -118,6 +123,77 @@ $(document).ready(function() {
 
         case "b2 block":
           score = score + 2;
+          var rightSquareColumn = parseInt(c)+1
+
+          if ((gridArray[r][c] === 0) && (gridArray[r][rightSquareColumn] === 0)) {
+
+            // Modify 2-D grid
+            gridArray[r][c] = !gridArray[r][c];
+            gridArray[r][rightSquareColumn] = !gridArray[r][rightSquareColumn];
+
+            // Delete block Patterns, and fill corresponding grid spaces
+            $(this).remove()
+            console.log(topLeftDiv)
+            $(topLeftDiv).css("background-color", color)
+            $(topLeftDiv).css("border-color", color)
+            $("#gridArray\\["+r+"\\]\\["+(rightSquareColumn)+"\\]").css("background-color", color)
+            $("#gridArray\\["+r+"\\]\\["+(rightSquareColumn)+"\\]").css("border-color", color)
+
+            // Detract one from blocks in menu
+            blocksInMenu--;
+
+            // Check if any lines are full
+            var isFull = {r: true, cleft: true, cright: true}
+
+            for (i=0;i<10;i++) {
+              // Check for horizontal
+              if (gridArray[r][i] === 0) {
+                isFull.r = false
+              }
+
+              // Check for vertical left
+              if (gridArray[i][c] === 0) {
+                isFull.cleft = false
+              }
+
+              // Check for vertical left
+              if (gridArray[i][rightSquareColumn] === 0) {
+                isFull.cright = false
+              }
+            }
+
+            // Fill in any row or column that is full
+            for (var key in isFull) {
+              if (isFull[key]) {
+                switch (key) {
+                  case "r":
+                    console.log("row is full")
+                    for (i=0;i<10;i++) {
+                      gridArray[r][i] = 0
+                      $("#gridArray\\["+r+"\\]\\["+i+"\\]").css("backgroundColor", "#e8e8e8")
+                      $("#gridArray\\["+r+"\\]\\["+i+"\\]").css("borderColor", "#e8e8e8")
+                    }
+                    break;
+                  case "cleft":
+                    console.log("column is full")
+                    for (i=0;i<10;i++) {
+                      gridArray[i][c] = 0
+                      $("#gridArray\\["+i+"\\]\\["+c+"\\]").css("backgroundColor", "#e8e8e8")
+                      $("#gridArray\\["+i+"\\]\\["+c+"\\]").css("borderColor", "#e8e8e8")
+                    }
+                    break;
+                  case "cright":
+                    console.log("column is full")
+                    for (i=0;i<10;i++) {
+                      gridArray[i][c+1] = 0
+                      $("#gridArray\\["+i+"\\]\\["+rightSquareColumn+"\\]").css("backgroundColor", "#e8e8e8")
+                      $("#gridArray\\["+i+"\\]\\["+rightSquareColumn+"\\]").css("borderColor", "#e8e8e8")
+                    }
+                  break;
+                }
+              }
+            }
+          }
           break;
         case "b3 block":
           score = score + 2;
@@ -129,7 +205,6 @@ $(document).ready(function() {
       }
 
       // Ensure that menu is always populated when empty
-      blocksInMenu--;
       if(blocksInMenu === 0) {
         loadPatternsToMenu();
       }
